@@ -1,0 +1,50 @@
+import java.util.*;
+public class ii
+{
+	public static class Node
+	{
+		int data;
+		Node left,right;
+		Node(int data)
+		{
+			this.data=data;
+			left=right=null;
+		}
+	}
+	
+	public static void inorder(Node root)
+	{
+		if(root==null)
+		{
+			return;
+		}
+		Stack<Node> s=new Stack<>();
+		while(root!=null)
+		{
+			s.push(root);
+			root=root.left;
+		}
+		while(!s.isEmpty())
+		{
+			Node t=s.pop();
+			System.out.println(t.data);
+			if(t.right !=null)
+			{
+				Node temp=t.right;
+				while(temp !=null)
+				{
+					s.push(temp);
+					temp=temp.left;
+				}
+			}
+		}
+	}
+	public static void main(String args[])
+	{
+		ii i=new ii();
+		Node n=new Node(1);
+		n.right=new Node(3);
+		n.left=new Node(2);
+		inorder(n);
+	}
+}
